@@ -1,0 +1,40 @@
+@import '../../styles/utils/colors';
+
+
+.progressBar {
+
+  $fill-height: 20px;
+  $unfilled-height: 5px;
+  $font-size: 0.6 * $fill-height;
+  
+  padding: 15px;
+
+  &--unfilled-bar {
+    background-color: #ddd;
+    border-radius: $unfilled-height / 2;
+    height: $unfilled-height;
+    width: 100%;
+    position: relative;
+  }
+  &--fill {
+    position: absolute;
+    background-color: $barney;
+    height: $fill-height;
+    border-radius: ($fill-height / 2) 0 0 ($fill-height / 2);
+    top: ($fill-height - $unfilled-height) / 2 * -1;
+    transition: width ease 0.3s, border-radius ease 0.3s, color ease 0.3s;
+    text-align: center;
+    overflow: hidden;
+    color: #fff;
+    font-size: $font-size;
+    line-height: $fill-height;
+    font-weight: 600;
+    padding: 0 10px;
+    box-sizing: border-box;
+
+    &--completed {
+      border-radius: $fill-height / 2;
+      color: #fffa;
+    }
+  }
+}
