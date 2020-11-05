@@ -8,6 +8,7 @@ import './Styles.scss';
 const LearningModule = ({setGameStatus}) => {
   const [currentQuestionId, setCurrentQuestionId] = React.useState(0);
   const [quizData, setQuizData] = React.useState({});
+  const [loading, setLoading] = React.useState(false);
   let currentQuestion = quizData.questionArr ? quizData.questionArr[currentQuestionId]: {};
   React.useEffect(()=>{
     getQuizData();
@@ -25,12 +26,18 @@ const LearningModule = ({setGameStatus}) => {
   }
 
   const handleSubmit=()=> {
-    if(currentQuestionId < quizData.totalQuestions-1){
-      setCurrentQuestionId(currentQuestionId+1);
-    } else {
-      setCurrentQuestionId(0);
-      setGameStatus({message: "Great Job! Play again.", loadIntro: true});
-    }
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+
+      if(currentQuestionId < quizData.totalQuestions-1){
+        setCurrentQuestionId(currentQuestionId+1);
+      } else {
+        setCurrentQuestionId(0);
+        setGameStatus({message: "Great Job! Play again.", loadIntro: true});
+      }
+
+    }, 500);
   }
   let possibleAnswers = [];
   if(currentQuestion.possibleAnswers){
@@ -59,7 +66,7 @@ const LearningModule = ({setGameStatus}) => {
               { possibleAnswers }
             </div>
             <div className="learningModule--submitButtonContainer">
-              <Button label="Submit" handleSubmit={ handleSubmit } />
+              <Button label="Submit" loadingSpinner={loading} handleSubmit={ handleSubmit } />
             </div>
           </div>
         </>
