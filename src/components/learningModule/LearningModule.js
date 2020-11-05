@@ -1,7 +1,7 @@
 import React from 'react';
 import SelectionBox from '../selectionBox/SelectionBox';
 import Button from '../button/Button';
-import ProgressBar from '../ProgressBar/ProgressBar';
+import ProgressBar from '../progressBar/ProgressBar';
 
 import './Styles.scss';
 
@@ -39,25 +39,12 @@ const LearningModule = ({setGameStatus}) => {
     })
   }
 
-  const progressBarText=()=> {
-    return progressBarCompletedPercent() + '% Complete';
-  }
-  const progressBarCompletedPercent=()=> {
-    console.log('calculating percent...');
-    console.log(quizData, currentQuestionId);
-    if (quizData.totalQuestions) {
-      return Math.round(((currentQuestionId + 1) / (quizData.totalQuestions + 1)) * 100);
-    } else {
-      return 0;
-    }
-  }
-
 
   return (
     <div className="learningModule">
-      <ProgressBar text={ progressBarText() } completedPercent={ progressBarCompletedPercent() } />
       { currentQuestion.title &&
         <>
+          <ProgressBar totalQuestions={quizData.totalQuestions} id={currentQuestion.id} />
           <div className="learningModule--header">
             <div className="learningModule--title">
               { currentQuestion.title }
