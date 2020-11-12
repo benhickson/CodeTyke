@@ -3,6 +3,11 @@
 @import '../../styles/utils/breakpoints';
 
 .learningModule {
+    $mobileTitleMarginTop: 15px;
+    $mobileTitleMarginOuter: 10px;
+    $mobileTitleMarginBottom: $mobileTitleMarginTop - 30px;
+    $mobileTitleTextSize: 1.3em;
+
     &--header {
         text-align: center;
     }
@@ -12,6 +17,12 @@
         color: $morning-sky;
         font-weight: 600;
         font-size: 1.5em;
+        @media only screen and (max-width: $mobile) {
+            font-size: $mobileTitleTextSize;
+            margin: $mobileTitleMarginTop 0 $mobileTitleMarginBottom $mobileTitleMarginOuter;
+            float: left;
+            display: inline-block;
+        }
     }
 
     &--subHeader{
@@ -21,8 +32,20 @@
             display: none;
         }
     }
+
+    &--modalBtn {
+        display: none;
+        @media only screen and (max-width: $mobile) {
+            font-size: $mobileTitleTextSize;
+            line-height: $mobileTitleTextSize;
+            margin: $mobileTitleMarginTop $mobileTitleMarginOuter $mobileTitleMarginBottom 0;
+            float: right;
+            display: inline-block;
+        }
+    }
   
     &--answerArea {
+        clear: both;
         background-color: white;
         box-shadow: 0px 0px 20px -15px;
         padding: 0px 0px 20px 0;

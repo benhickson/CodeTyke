@@ -1,0 +1,66 @@
+@import '../../styles/utils/colors';
+
+.modal {
+
+  $yPad: 10px;
+  $xPad: 20px;
+
+  position: relative;
+
+  &--icon {
+    color: $morning-sky;
+  }
+
+  &--background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0005;
+  }
+
+  &--card {
+    $background-color: #fff;
+    $triangle-width: 20px;
+
+    position: absolute;
+    margin-top: $triangle-width * (2/3);
+    right: 0;
+    background-color: $background-color;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: ($yPad * 2) ($xPad * 2);
+    width: calc(100vw - #{$xPad});
+
+    font-size: 0.8em;
+    line-height: initial;
+
+    &:after {
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: $triangle-width * -1.5;
+      right: 0;
+      border: $triangle-width solid transparent;
+      border-bottom-color: $background-color;
+      content: "";
+    }
+  }
+
+  &--closeBtn {
+    position: absolute;
+    top: $yPad;
+    right: $xPad;
+    color: $elephant-paw;
+    font-size: 1.1em;
+  }
+
+  &--heading {
+    font-size: 1em;
+    font-weight: bold;
+    color: $barney;
+    margin-bottom: $yPad;
+  }
+
+}
