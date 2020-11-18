@@ -3,13 +3,14 @@
 @import '../../styles/utils/breakpoints';
 
 .learningModule {
-    $mobileTitleMarginTop: 15px;
-    $mobileTitleMarginOuter: 10px;
-    $mobileTitleMarginBottom: $mobileTitleMarginTop - 30px;
-    $mobileTitleTextSize: 1.3em;
-
     &--header {
         text-align: center;
+        @media only screen and (max-width: $mobile) {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            align-items: center;
+        }
     }
 
     &--title {
@@ -17,11 +18,18 @@
         color: $morning-sky;
         font-weight: 600;
         font-size: 1.5em;
+
         @media only screen and (max-width: $mobile) {
-            font-size: $mobileTitleTextSize;
-            margin: $mobileTitleMarginTop 0 $mobileTitleMarginBottom $mobileTitleMarginOuter;
-            float: left;
-            display: inline-block;
+            margin:  0;
+            font-size: 1.3em;
+        }
+        
+    }
+
+    &--additionalInfoIcon {
+        color: $morning-sky;
+        @media only screen and (min-width: $mobile) {
+            display: none;
         }
     }
 
@@ -32,20 +40,8 @@
             display: none;
         }
     }
-
-    &--modalBtn {
-        display: none;
-        @media only screen and (max-width: $mobile) {
-            font-size: $mobileTitleTextSize;
-            line-height: $mobileTitleTextSize;
-            margin: $mobileTitleMarginTop $mobileTitleMarginOuter $mobileTitleMarginBottom 0;
-            float: right;
-            display: inline-block;
-        }
-    }
   
     &--answerArea {
-        clear: both;
         background-color: white;
         box-shadow: 0px 0px 20px -15px;
         padding: 0px 0px 20px 0;
@@ -76,6 +72,8 @@
         }
         @media only screen and (max-width: $mobile) {
             grid-gap: 10px 0px;
+            padding: 0 0 40px;
+
         }
     }
 
@@ -94,4 +92,15 @@
             }
         }
     }
+
+    &--overlay {
+        height: 100vh;
+        width: 100vw;
+        background: black;
+        opacity: .5;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
 }

@@ -1,34 +1,27 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import './Styles.scss';
 
-const Modal = ({className, zIndex = 200, heading, contents}) => {
+const Modal = ({setShowModal, showModal, children}) => {
 
-  const [showModal, setShowModal] = React.useState(false);
-
-  const openModal = () => {
-    setShowModal(true);
-  };
-  const closeModal = () => {
-    setShowModal(false);
+  const hideModal = function() {
+    setShowModal(!showModal);
   }
 
   return (
-    <div className={[className, 'modal'].filter(Boolean).join(' ')}>
-      <FontAwesomeIcon icon={faInfoCircle} className="modal--icon" onClick={ openModal } />
-      { showModal &&
-        <>
-          <div className="modal--background" style={{ zIndex: zIndex }} onClick={ closeModal }></div>
-          <div className="modal--card" style={{ zIndex: zIndex + 1 }}>
-            <FontAwesomeIcon icon={faTimes} className="modal--closeBtn" onClick={ closeModal } />
-            { heading && <div className="modal--heading">{heading}</div> }
-            { contents && <div className="modal--contents">{contents}</div> }
-          </div>
-        </>
-      }
-    </div>
+    <>
+      <div className="modal" style={{display: showModal ? "block" : "none"}}>
+        <div className="modal--closeIcon">
+          <FontAwesomeIcon icon={faTimes} onClick={hideModal} size="lg" />
+        </div>
+        <div className="modal--title"> Rules </div>
+        <div className="modal--content">
+          { children }
+        </div>
+      </div>
+    </>
   )
 }
 
