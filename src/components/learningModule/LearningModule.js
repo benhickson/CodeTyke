@@ -2,6 +2,7 @@ import React from 'react';
 import SelectionBox from '../selectionBox/SelectionBox';
 import Button from '../button/Button';
 import ProgressBar from '../progressBar/ProgressBar';
+import Modal from '../modal/Modal';
 
 import './Styles.scss';
 
@@ -59,6 +60,7 @@ const LearningModule = ({setGameStatus}) => {
             <div className="learningModule--subHeader">
               { currentQuestion.additionalInfo }
             </div>
+            <Modal className="learningModule--modalBtn" heading="Rules" contents={currentQuestion.additionalInfo} />
           </div>
 
           <div className="learningModule--answerArea">
