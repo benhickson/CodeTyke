@@ -10,7 +10,45 @@
     border: solid 1px $elephant-paw;
     border-radius: 5px;
     text-align: center;
+    cursor: pointer;
+
+    &.incorrect {
+      background-color: $faded-fire; 
+      color: white;
+
+      animation-name: fadeOutBg;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-in-out;
+      animation-delay: 1s;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+    }
+
+    &.checked {
+      background-color: $morning-sky;
+      color: white;
+    }
+
+    &.locked {
+      pointer-events: none;
+    }
+
     &--image {display: block; width: inherit; padding-bottom: 8px;  }
     &--text {font-size: 1em; font-weight: 600;}
-    input { position: absolute; left: 4px;}
+
+    input {
+      position: absolute; left: 4px;
+      background-color: $elephant-paw;
+    }
+
+    @keyframes fadeOutBg {
+      0% {
+        background-color: $faded-fire;
+        color: white;
+      }
+      100% {
+        background-color: white;
+        color: unset;
+      }
+    }
   }

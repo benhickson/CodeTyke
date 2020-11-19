@@ -6,6 +6,7 @@ $size: 50px;
 
 .submitButton{
   background-color: $grass-blade;
+  transition: background-color 100ms ease;
   border-radius: $size / 2;
   color: white;
   font-size: $size * .4;
@@ -14,6 +15,11 @@ $size: 50px;
   line-height: $size;
   cursor: pointer;
   @include flex-spacing(space-between);
+
+  &:not(.enabled) {
+    pointer-events: none;
+    background-color: $elephant-paw;
+  }
 
   &--label {
     padding: 0 20px;
